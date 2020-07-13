@@ -16,40 +16,36 @@
 			margin: 10px;
 			padding: 10px;
 		}
+
+		#login-form {
+			margin-top: 10%;
+			padding-top: 10px;
+		}
 	</style>
 
 </head>
 
 <body>
-
 	<section class="container">
 		<article class="row">
 			<div class="col">
-				<form action="../backend/reset.php" method="post" onsubmit="return validatePassword()">
-					<h3>Reset Your Password</h3>
-					<div class="form-group">
-						<input class="form-control" type="password" name="current-password" id="current-password" placeholder="Enter Current Password" required>
-						<input class="form-control" type="password" name="new-password" id="new-password" placeholder="Enter New Password" required>
-						<input class="form-control" type="password" name="confirm-passowrd" id="confirm-passowrd" placeholder="Confirm New Password" required>
-						<input class="btn btn-success" type="submit" name="submit" value="Reset">
-					</div>
-				</form>
+				<div id="login-form" align="center">
+					<form action="../backend/reset.php" method="post" onsubmit="return validatePassword()">
+						<h2><u>OPENVPN</u></h2>
+						<h3>Login</h3>
+						<p>To reset your password, please login with your user id</p>
+						<div class="form-group">
+							<input type="text" name="userid" id="userid" placeholder="User Id">
+							<input type="password" name="password" id="password" placeholder="Password">
+							<br>
+							<input class="btn btn-success" type="submit" name="submit" value="Login">
+							<button class="btn btn-warning">Reset</button>
+						</div>
+					</form>
+				</div>
 			</div>
 		</article>
 	</section>
-	<script type="text/javascript">
-		const validatePassword = () => {
-			const password = document.getElementById('new-password').value;
-			const confirmPassowrd = document.getElementById('confirm-passowrd').value;
-			if (password === confirmPassowrd) {
-				console.log('Validated');
-				return true;
-			} else {
-				alert('Passwords must maacth. Please re enter');
-				return false;
-			}
-		}
-	</script>
 </body>
 
 </html>

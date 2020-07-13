@@ -15,8 +15,7 @@ if (isset($_POST['submit'])) {
         $password = $row['password'];
         $userPassword = trim(htmlspecialchars(stripslashes($_POST['current-password'])));
         if ($password === $userPassword) {
-            $newPassword = trim(htmlspecialchars(stripslashes($_POST['new-password'])));
-            $newPassword = md5($newPassword);
+            $newPassword = trim(htmlspecialchars(stripslashes($_POST['new-password'])));    
             $query = "UPDATE user SET password = '$newPassword' WHERE id = 1";
 
             $result = $conn->query($query);
