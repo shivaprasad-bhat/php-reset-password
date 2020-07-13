@@ -3,7 +3,7 @@
 define('host', 'localhost');
 define('username', 'root');
 define('password', '');
-define('dbname', 'user_manage');
+define('dbname', 'openvpn');
 
 //Create a connection
 $conn = new mysqli(host, username, password, dbname) or die('Connection error');

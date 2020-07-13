@@ -1,39 +1,52 @@
 <?php
+if (!isset($_SESSION['userid'])) {
+    session_start();
+}
+function formatData($data)
+{
+    $data = trim(htmlspecialchars(stripslashes($data)));
+    return $data;
+}
 
-//Check value submitted from form
-if (isset($_POST['submit'])) {
-    //include file for connection
-    require('./connect.php');
+isset($_SESSION['userid']) ? $userid = $_SESSION['userid'] : "";
 
-    //Validate old password
-    $query = "SELECT password from user WHERE id = 1";
-    $result = $conn->query($query);
-
-    //If old password matches then proceed for updation
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $password = $row['password'];
-        $userPassword = trim(htmlspecialchars(stripslashes($_POST['current-password'])));
-        if ($password === $userPassword) {
-            $newPassword = trim(htmlspecialchars(stripslashes($_POST['new-password'])));    
-            $query = "UPDATE user SET password = '$newPassword' WHERE id = 1";
-
-            $result = $conn->query($query);
-            if ($result === TRUE) {
-                echo "Password updated";
-            } else {
-                echo "Some error in updating the password";
-            }
+if ($userid !== "") {
+    require("./connect.php");
+    if (isset($_POST['submit'])) {
+        $newPassword = formatData($_POST['new-password']);
+        $query = "UPDATE user SET user_pass = '$newPassword' WHERE user_id = '$userid'";
+        $result = $conn->query($query);
+        $conn->close();
+        if ($result === TRUE) {
+            session_unset();
+            session_destroy();
+            echo '
+                    <script language="javascript">
+                    alert("Password Updated Successfully. Logged out from the system.")
+                    window.location.href="/reset/frontend/"
+                    </script>
+                ';
         } else {
-            echo "Old password didn't match";
+            echo '
+                    <script language="javascript">
+                    alert("Failed to update password. Please retry")
+                    window.location.href="/reset/frontend/reset.php"
+                    </script>
+                ';
         }
     } else {
-        echo "User not found";
+        echo '
+                    <script language="javascript">
+                    alert("Please submit form before using the reset option")
+                    window.location.href="/reset/frontend/"
+                    </script>
+                ';
     }
-
-    //Close the connection
-    $conn->close();
 } else {
-    //In case of direct access before submission
-    echo "Please submit the form before resetting";
+    echo '
+            <script language="javascript">
+            alert("Something Went Wrong. Can\'t commit. Please retry")
+            window.location.href="/reset/frontend/"
+            </script>
+        ';
 }
