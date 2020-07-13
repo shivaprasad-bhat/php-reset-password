@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Reset Password</title>
+	<title>Login - Openvpn</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 	<style type="text/css">
 		form {
@@ -22,7 +22,6 @@
 			padding-top: 10px;
 		}
 	</style>
-
 </head>
 
 <body>
