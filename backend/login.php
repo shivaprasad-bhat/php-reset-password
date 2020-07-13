@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
             $conn->close();
             echo '
             <script language="javascript">
-            alert("SLogged in successfully")
+            alert("Logged in successfully")
             window.location.href="/reset/frontend/reset.php"
             </script>
             ';
