@@ -33,7 +33,7 @@
 			<div class="col">
 				<div id="login-form" align="center">
 					<form action="../backend/login.php" method="post">
-						<h2><u>OPENVPN</u></h2>
+						<h2><i>OPENVPN</i></h2>
 						<h3>Login</h3>
 						<p>To reset your password, please login with your user id</p>
 						<div class="form-group">

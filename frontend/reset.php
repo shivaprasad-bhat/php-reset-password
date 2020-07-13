@@ -28,13 +28,15 @@
     <section class="container">
         <article class="row">
             <div class="col">
-                <div id="reset-form">
+                <div id="reset-form" align="center">
                     <form action="../backend/reset.php" method="post" onsubmit="return validatePassword()">
+                        <h2><i>OPENVPN</i></h2>
                         <h3>Reset Your Password</h3>
                         <div class="form-group">
                             <input class="form-control" type="password" name="new-password" id="new-password" placeholder="Enter New Password" required>
                             <input class="form-control" type="password" name="confirm-passowrd" id="confirm-passowrd" placeholder="Confirm New Password" required>
-                            <input class="btn btn-success" type="submit" name="submit" value="Reset">
+                            <input class="btn btn-success" type="submit" name="submit" value="Reset"> <br>
+                            <a href="../backend/logout.php">Wrong user ? Logout!</a>
                         </div>
                     </form>
                 </div>
