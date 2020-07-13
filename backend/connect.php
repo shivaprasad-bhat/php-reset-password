@@ -2,7 +2,7 @@
 
 define('host', 'localhost');
 define('username', 'root');
-define('password', '');
+define('password', 'password');
 define('dbname', 'openvpn');
 
 //Create a connection
